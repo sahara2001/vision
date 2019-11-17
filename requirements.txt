@@ -1,0 +1,5 @@
+cython
+numpy
+argparse
+opencv-python
+pyrealsense2
