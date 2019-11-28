@@ -16,9 +16,10 @@ def main():
             rs.config.enable_device_from_file(config, args.input, False)
 
         pipeline = rs.pipeline()
-
-        config.enable_stream(rs.stream.infrared,1, 640, 480, rs.format.y8, 30) # change second arg between 1, 2 to swtich left and right infrared cam
-
+        print(dir(rs.stream),dir(rs.format))
+        #config.enable_stream(rs.stream.infrared,1, 640, 480, rs.format.y8, 30) # change second arg between 1, 2 to swtich left and right infrared cam
+        config.enable_stream(rs.stream.color, 1280, 720, rs.format.rgb8, 30) # change second arg between 1, 2 to swtich left and right infrared cam
+        
         pipeline.start(config)
 
         # print(rs.context().devices[0].sensors[0].profiles)
@@ -28,7 +29,8 @@ def main():
         while True:
             print("Saving frame:", i)
             frames = pipeline.wait_for_frames()
-            depth_frame = frames.get_infrared_frame()
+            #depth_frame = frames.get_infrared_frame()
+            depth_frame = frames.get_color_frame()
             depth_image = np.asanyarray(depth_frame.get_data())
             cv2.imwrite(args.directory + "/" +str(i).zfill(6) + ".png", depth_image)
             i += 5
