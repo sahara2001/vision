@@ -15,7 +15,7 @@ blockStride = (8,8)
 cellSize = (8,8)
 nbins = 9
 derivAperture = 1
-winSigma = 4.
+winSigma = 4
 histogramNormType = 0
 L2HysThreshold = 2.0000000000000001e-01
 gammaCorrection = 0
@@ -24,9 +24,9 @@ nlevels = 64
 hog = cv2.HOGDescriptor(winSize,blockSize,blockStride,cellSize,nbins,derivAperture,winSigma,
                         histogramNormType,L2HysThreshold,gammaCorrection,nlevels)
 
-img = hog.compute(im1)
-tmp = hog.compute(im1[::2,::2,:])
-print(img.shape,tmp.shape)
+#img = hog.compute(im1)
+#tmp = hog.compute(im1[::2,::2,:])
+#print(img.shape,tmp.shape)
 
 winStride = (4,4)
 padding = (8,8)
@@ -41,10 +41,10 @@ patch = (350,850)
 template = im1[290:450,750:950,:]
 print(template.shape)
 locations = (patch,)
-hist = hog.compute(im1,winStride,padding,locations)
+#hist = hog.compute(im1,winStride,padding,locations)
 print(1)
 # print(cv2.HOGDescriptor_getDefaultPeopleDetector().shape)
-hog.setSVMDetector(hist)
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 r,c,_ = template.shape
 #im1 = im1[800:1000,250:350,:]
 sse = np.zeros(im1.shape[:2])
@@ -53,7 +53,7 @@ start = datetime.datetime.now()
 (rects, weights) = hog.detectMultiScale(im1, winStride=winStride,padding=padding,scale=1.5, useMeanshiftGrouping=meanShift)
 print(2)
 print(rects)
-for ( x,y,w,h) in rects:
+for (x,y,w,h) in rects:
     cv2.rectangle(im1,(x,y), (x+w, y+h), (0,255,0), 2)
 
 

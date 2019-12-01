@@ -35,8 +35,8 @@ def main():
             depth_frame = frames.get_color_frame()
             depth_image = np.asanyarray(depth_frame.get_data())
             cv2.imwrite(args.directory + "/" +str(i).zfill(6) + ".png", depth_image)
-            if i == 0:
-
+            #if i == 0:
+                
             i += 5
             if i > 60:
                 break
