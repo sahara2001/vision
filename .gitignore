@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 data
 /data
 data/*
 out/
+=======
+data/*
+librealsense/*
+data
+librealsense
+>>>>>>> 7eb5a13651c478e9ebd4566696c87919557b49b8
