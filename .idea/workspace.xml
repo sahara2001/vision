@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dc0362fb-9585-4ec6-98f7-2c9e5073b641" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/bs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/temp.macosx-10.7-x86_64-3.6/lib/features.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/temp.win-amd64-3.6/Release/lib/features.cp36-win_amd64.exp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/temp.win-amd64-3.6/Release/lib/features.cp36-win_amd64.lib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/temp.win-amd64-3.6/Release/lib/features.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features.cp36-win_amd64.pyd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features.cpython-36m-darwin.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/install_realsense_sdk_mac_os.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features.pyx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/FingerDetection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/hog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/tracker.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000000.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000010.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000015.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000020.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000025.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000030.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000035.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000040.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000045.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000050.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000055.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/000060.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000000.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000010.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000015.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000020.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000025.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000030.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000035.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000040.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000045.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000050.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000055.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/1000060.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/mouse.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/mouse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/tracking.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UG8C9lwiKFOTjqnQp93CzhDy0L" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/output" />
+      <recent name="$PROJECT_DIR$/modules" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dc0362fb-9585-4ec6-98f7-2c9e5073b641" name="Default Changelist" comment="" />
+      <created>1574971441408</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574971441408</updated>
+      <workItem from="1574971447348" duration="18000" />
+      <workItem from="1574971502074" duration="2158000" />
+      <workItem from="1575222958950" duration="7152000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
