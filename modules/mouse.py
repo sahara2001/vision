@@ -8,16 +8,17 @@ class Mouse:
         self.width = width
         self.height = height
         self.depth = depth
-        self.pos=[0,0]
+        self.pos=[1,1]
     
     def disp(self):
-        pyautogui.moveTo(self.pos[0], self.pos[1],duration = 1) 
+        gui.moveTo(self.pos[0], self.pos[1],duration = gui.MINIMUM_DURATION) 
 
     def mov(self, angler,anglec, dr,dc):
         dr += self.depth * math.atan(angler) 
         dc += self.depth * math.atan(anglec)
         self.pos[0] += dr
         self.pos[1] += dc
+        self.disp()
 
     def reset(self):
         self.pos=[0,0]
@@ -34,3 +35,11 @@ class Mouse:
     def set_d(self,d):
         self.depth = d
         self.reset()
+
+
+
+if __name__ == "__main__":
+    controller = Mouse(1280,720,500)
+
+    for i in range(1,1000,50):
+        controller.mov(0,0,50,50)

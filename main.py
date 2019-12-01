@@ -1,3 +1,4 @@
+
 import numpy as np
 import pyautogui as gui
 import pyrealsense2 as rs
@@ -26,6 +27,8 @@ def main():
         
         # read frames from either camera or bag file
         i = 0
+        pos = [1,1]
+        start = 0
         while True:
             print("Saving frame:", i)
             frames = pipeline.wait_for_frames()
@@ -33,6 +36,8 @@ def main():
             depth_frame = frames.get_color_frame()
             depth_image = np.asanyarray(depth_frame.get_data())
             cv2.imwrite(args.directory + "/" +str(i).zfill(6) + ".png", depth_image)
+            if i == 0:
+
             i += 5
             if i > 60:
                 break
