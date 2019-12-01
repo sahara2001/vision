@@ -5,10 +5,12 @@ from numpy import ma
 from scipy import integrate
 from scipy import linalg
 
-im1 = cv2.imread('../out/search.png')
-im1 = cv2.cvtColor(im1, cv2.COLOR_BGR2RGB)
-template = cv2.imread('../out/template1.png')
+im1 = cv2.imread('../output/b_Color.png')
+template = cv2.imread('../output/template.png')
 template = cv2.cvtColor(template, cv2.COLOR_BGR2RGB)
+print(im1.shape)
+img = im1[::4,::4,:]
+template = template[::4,::4,:]
 
 tmp_yc = np.tile(np.array(range(1,template.shape[0]+1)), (template.shape[1], 1)).transpose()
 tmp_xr= np.tile(np.array(range(1,template.shape[1]+1)), (template.shape[0],1))

@@ -27,14 +27,13 @@ if __name__=="__main__":
     # template = cv2.imread('../out/template.png')
     
     # template = cv2.cvtColor(template, cv2.COLOR_BGR2RGB)
-    img = cv2.imread('../out/search.png')
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    template = cv2.imread('../out/template1.png')
+    img = cv2.imread('../output/b_Color.png')
+    template = cv2.imread('../output/template.png')
     template = cv2.cvtColor(template, cv2.COLOR_BGR2RGB)
 
     print(img.shape)
-    # img = img[::4,::4,:]
-    # template = template[::4,::4,:]
+    img = img[::4,::4,:]
+    template = template[::4,::4,:]
     result = match(img,template)
 
 
