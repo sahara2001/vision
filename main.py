@@ -24,6 +24,8 @@ def main():
         pipeline.start(config)
 
         # print(rs.context().devices[0].sensors[0].profiles)
+        align_to = rs.stream.color
+        alignedFs = rs.align(align_to)
         
         # read frames from either camera or bag file
         i = 0
@@ -32,10 +34,14 @@ def main():
         while True:
             print("Saving frame:", i)
             frames = pipeline.wait_for_frames()
-            #depth_frame = frames.get_infrared_frame()
-            depth_frame = frames.get_color_frame()
+            aligned_reames = alignedFs.process(frames)
+
+            depth_frame = frames.get_infrared_frame()
+            color_frame = frames.get_color_frame()
             depth_image = np.asanyarray(depth_frame.get_data())
-            cv2.imwrite(args.directory + "/" +str(i).zfill(6) + ".png", depth_image)
+            color_image = np.asanyarray(depth_frame.get_data())
+            cv2.imwrite(args.directory + "/depth" +str(i).zfill(6) + ".png", depth_image)
+            cv2.imwrite(args.directory + "/color" +str(i).zfill(6) + ".png", color_image)
             #if i == 0:
                 
             i += 5
