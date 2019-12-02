@@ -2,4 +2,5 @@ cython
 numpy
 argparse
 opencv-python
+opencv-contrib-python
 pyrealsense2

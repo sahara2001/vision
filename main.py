@@ -5,9 +5,9 @@ import pyrealsense2 as rs
 import argparse
 import cv2
 import os
-from bs import getHand, getFingerTip,getFingerTip1
+from bs import getHand, getFingerTip,getFingerTip1, getBackground, backgroundSubtraction
 
-ub = [[[60, 240,256]]]
+ub = [[[19, 240,256]]]
 lb = [[[3,80,-1]]]
 
 LOAD_BAG = False
@@ -36,6 +36,12 @@ def main():
         i = 0
         pos = [1,1]
         start = 0
+        history = np.zeros((20,2),dtype=np.int32)
+        coord = np.array([1,1])
+        bg = None
+        bg_std = None
+        depth_history = None # average depth for latest 3 frames before a frame gets displayed 
+        # labels = np.array((20))
         while True:
             print("Saving frame:", i)
             frames = pipeline.wait_for_frames()
@@ -48,34 +54,90 @@ def main():
             color_image = np.asanyarray(color_frame.get_data(), dtype=np.uint8)
             color_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
             # depth_image = 
-            cv2.imwrite(args.directory + "/depth" +str(i).zfill(6) + ".png", depth_image.astype(np.uint8))
-            cv2.imwrite(args.directory + "/color" +str(i).zfill(6) + ".png", color_image)
-            #if i == 0:
-            # print(depth_image[240,320])
-            # cv2.rectangle(depth_image, (235,315), (245, 325), (0,255,0), 2)
-            a = depth_image.astype(np.uint8)
-            # print(np.mean(a))
-            # cv2.imshow("IM", depth_image.astype(np.uint8))
-            if i > 30 and i%5==4:
-                color_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
+            # cv2.imwrite(args.directory + "/depth" +str(i).zfill(6) + ".png", depth_image.astype(np.uint8))
+            # cv2.imwrite(args.directory + "/color" +str(i).zfill(6) + ".png", color_image)
+
+
+            depth = depth_image.astype(np.uint8)
+            color_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
+
+
+            # build background model
+            if i == 0:
+                H,W,C = color_image.shape
+                imgs = np.zeros((10,H,W,C))
+                depth_history = np.zeros(depth.shape)
+                
+            
+            elif i > 10 and i < 20:
+                imgs[i-11,:,:,:] = color_image
+                
+            elif i == 20:
+                imgs[i-11,:,:,:] = color_image
+                bg, bg_std = getBackground(imgs)
+            elif i > 20 and i < 40:
+                # stable match
+                # color_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
+
                 x = getHand(color_image, ub, lb)
                 # print(a.shape)
-                finger = getFingerTip1(x,a)
-                # print(finger)qq
-                if finger[0] > 0 and finger[1] > 0:
+                r,c = getFingerTip1(x,depth)
+                history[i-21,:] = np.array([r,c])
+            elif i == 40:
+                # find stable match
+                print('match')
+                change = (history[0:18,:] - history[1:19,:]).sum(axis=1)
+                prev_sum = np.array([0, 0],dtype=np.int32)
+                prev = 0
+                cur_sum = np.array([0, 0],dtype=np.int32)
+                cur = 0
+                for j in range(18):
+                    if change[j] <= 10:
+                        cur_sum += history[j,:]
+                        cur += 1
 
-                    cv2.circle(color_image,finger,10,(0,0,255))
+                    else: 
+                        if cur > prev:
+                            prev = cur
+                            prev_sum = cur_sum
+                        
+                        cur = 0
+                        cur_sum = np.array([0, 0],dtype=np.int32)
+
+                coord = prev_sum / prev
+                r = coord[0]
+                c = coord[1]
+
+            elif i > 40 and i%5==4:
+                
+                depth_history = ((depth_history +depth) / 3).astype(np.uint8) # average depth
+                
+                
+                x = getHand(color_image, ub, lb, prev=coord)
+                # print(a.shape)
+                r,c = getFingerTip1(x,depth_history, prev=coord)
+                # print(finger)qq
+                if r > 0 and c > 0:
+                    color_image = cv2.cvtColor(color_image, cv2.COLOR_RGB2BGR)
+                    cv2.circle(color_image,(c,r),10,(0,0,255))
                     # print(x.sum(),x.shape)
                     
                     # cv2.imshow("IM", x.astype(np.uint8) * 255)
                     cv2.imshow("IM", color_image)
+                    # cv2.imwrite(args.directory + "/result" +str(i).zfill(6) + ".png", color_image.astype(np.uint8))
                 
 
-            if cv2.waitKey(25) & 0xFF == ord('q'):
-                break
+                if cv2.waitKey(25) & 0xFF == ord('q'):
+                    break
+                depth_history[:,:] = 0 # clear avg depth
+
+            elif i > 40 and i%3!=2:
+                # sum up depth frame in consecutinve frames and take average
+                depth_history += cv2.GaussianBlur(depth,(3,3),0)
+
             #cv2.waitKey(0)
             i += 1
-            # if i > 60:
+            # if i >= 80:
             #     break
     except RuntimeError as e:
         print(e)
