@@ -1,28 +1,17 @@
-<<<<<<< HEAD
-import numpy as np
-import pyautogui as gui
-import pyrealsense2 as rs
+
 import cv2
-
-gui.moveTo(1, 1,duration = 0.01) 
-
-# gui.moveTo(100, 100,duration = 0.01) 
-
-
-
-for i in range(60):
-=======
 import numpy as np
-import pyautogui as gui
-import pyrealsense2 as rs
-import cv2
+import matplotlib.pyplot as plt
+from pylab import *
+import datetime 
 
-gui.moveTo(1, 1,duration = 0.01) 
+color_image = cv2.imread('out/color000020.png')
+color_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
+# print(im1.shape)
+# plt.imshow(im1,cmap='gray')
+# plt.show()
 
-# gui.moveTo(100, 100,duration = 0.01) 
+cv2.circle(color_image,(100,100),1,(0,0,255))
+cv2.imshow("IM", color_image)
 
-
-
-for i in range(60):
->>>>>>> 7eb5a13651c478e9ebd4566696c87919557b49b8
-    gui.moveTo(100+i, 100+i,duration = 0.01) 
+cv2.waitKey(0)
