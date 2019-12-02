@@ -48,8 +48,8 @@ def main():
             color_image = np.asanyarray(color_frame.get_data(), dtype=np.uint8)
             color_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
             # depth_image = 
-            # cv2.imwrite(args.directory + "/depth" +str(i).zfill(6) + ".png", depth_image.astype(np.uint8))
-            # cv2.imwrite(args.directory + "/color" +str(i).zfill(6) + ".png", color_image)
+            cv2.imwrite(args.directory + "/depth" +str(i).zfill(6) + ".png", depth_image.astype(np.uint8))
+            cv2.imwrite(args.directory + "/color" +str(i).zfill(6) + ".png", color_image)
             #if i == 0:
             # print(depth_image[240,320])
             # cv2.rectangle(depth_image, (235,315), (245, 325), (0,255,0), 2)

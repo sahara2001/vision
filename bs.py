@@ -71,7 +71,7 @@ if __name__ == '__main__':
 
     template = cv2.cvtColor(template, cv2.COLOR_BGR2RGB)
 
-    im1 = cv2.imread('out/color000030.png')
+    im1 = cv2.imread('out/color000025.png')
     depth = cv2.imread('out/depth000050.png')
     # im1 =  cv2.cvtColor(im1, cv2.COLOR_BGR2RGB)
     template = cv2.imread('output/template.png')
@@ -96,8 +96,8 @@ if __name__ == '__main__':
 
 
 
-    ub = [[[26, 240,256]]]
-    lb = [[[3,80,-1]]]
+    ub = [[[15, 220,256]]]
+    lb = [[[3,90,-1]]]
     x = ((im2 < ub).sum(axis=2) == 3 )*((im2 > lb).sum(axis=2) == 3 )
 
     x = x.astype(np.uint8)
@@ -116,13 +116,14 @@ if __name__ == '__main__':
     
 
     kernel = np.ones((16,16), np.uint8)
-    kernel = np.ones((8,8), np.uint8)
+    kernel = np.ones((4,4), np.uint8)
 
     # x = cv2.dilate(x,kernel,iterations = 1)
     x = cv2.morphologyEx(x,cv2.MORPH_OPEN, kernel)
     x = cv2.medianBlur(x, 5)
-    x = cv2.medianBlur(x, 7)
-    x = cv2.medianBlur(x, 3)
+    # x = cv2.medianBlur(x, 5)
+    # x = cv2.medianBlur(x, 7)
+    # x = cv2.medianBlur(x, 3)
 
     # x = cv2.dilate(x,kernel,iterations = 1)
     # kernel = np.ones((4,4), np.uint8)
